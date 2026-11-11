@@ -1,0 +1,224 @@
+[
+  {
+    "id": "assessment-feedback",
+    "category": {
+      "en": "Assessment",
+      "de": "Beurteilung",
+      "fr": "Évaluation"
+    },
+    "title": {
+      "en": "Can we trust automated assessment?",
+      "de": "Können wir automatisierten Beurteilungen vertrauen?",
+      "fr": "Peut-on faire confiance à l’évaluation automatisée ?"
+    },
+    "context": {
+      "en": "A primary-school teacher uses a digital platform to assess pupils’ written mathematics responses. The platform assigns scores and generates feedback automatically. A pupil receives a low score, although the teacher has seen the pupil explain the concept correctly during classroom discussion.",
+      "de": "Eine Primarlehrperson nutzt eine digitale Plattform, um schriftliche Mathematikantworten von Schülerinnen und Schülern zu beurteilen. Die Plattform vergibt automatisch Punkte und erstellt Rückmeldungen. Ein Kind erhält eine tiefe Punktzahl, obwohl es das Konzept im Unterrichtsgespräch korrekt erklären konnte.",
+      "fr": "Une enseignante ou un enseignant du primaire utilise une plateforme numérique pour évaluer les réponses écrites en mathématiques. La plateforme attribue automatiquement des points et génère des commentaires. Un élève obtient un faible score, alors que l’enseignant·e l’a vu expliquer correctement le concept lors d’une discussion en classe."
+    },
+    "question": {
+      "en": "What would you advise the teacher to do?",
+      "de": "Was würden Sie der Lehrperson empfehlen?",
+      "fr": "Que conseilleriez-vous à l’enseignant·e ?"
+    },
+    "options": [
+      {
+        "id": "accept",
+        "label": {
+          "en": "Accept the automated score as a consistent assessment.",
+          "de": "Die automatische Bewertung als einheitliche Beurteilung akzeptieren.",
+          "fr": "Accepter le score automatisé comme une évaluation cohérente."
+        },
+        "feedback": {
+          "en": "Automated scoring may support consistency, but it reflects the criteria and examples built into the system. It may overlook reasoning, alternative approaches or context.",
+          "de": "Automatisierte Bewertungen können zur Einheitlichkeit beitragen, beruhen aber auf den im System hinterlegten Kriterien und Beispielen. Denkwege, alternative Lösungswege oder Kontext können unberücksichtigt bleiben.",
+          "fr": "La notation automatisée peut favoriser la cohérence, mais elle reflète les critères et exemples intégrés au système. Elle peut négliger le raisonnement, des démarches alternatives ou le contexte."
+        }
+      },
+      {
+        "id": "review",
+        "label": {
+          "en": "Review the pupil’s response and the platform’s assessment criteria.",
+          "de": "Die Antwort des Kindes und die Bewertungskriterien der Plattform überprüfen.",
+          "fr": "Examiner la réponse de l’élève et les critères d’évaluation de la plateforme."
+        },
+        "feedback": {
+          "en": "Reviewing the criteria helps reveal what the system recognises and where its evaluation may be limited. Ask whether the criteria capture the intended learning objective.",
+          "de": "Die Überprüfung der Kriterien zeigt, was das System erkennt und wo seine Bewertung begrenzt sein kann. Fragen Sie, ob die Kriterien das angestrebte Lernziel tatsächlich erfassen.",
+          "fr": "Examiner les critères permet de voir ce que le système reconnaît et où son évaluation peut être limitée. Demandez-vous si les critères rendent bien compte de l’objectif d’apprentissage visé."
+        }
+      },
+      {
+        "id": "combine",
+        "label": {
+          "en": "Combine the automated result with other evidence of learning.",
+          "de": "Das automatische Ergebnis mit weiteren Lernnachweisen kombinieren.",
+          "fr": "Combiner le résultat automatisé avec d’autres traces d’apprentissage."
+        },
+        "feedback": {
+          "en": "Triangulating evidence can provide a fuller picture of learning. The teacher still needs to understand the limitations of each source and make a reasoned judgement.",
+          "de": "Die Kombination verschiedener Nachweise kann ein umfassenderes Bild des Lernens ergeben. Die Lehrperson muss dennoch die Grenzen jeder Quelle verstehen und ein begründetes Urteil fällen.",
+          "fr": "La triangulation des données peut donner une image plus complète des apprentissages. L’enseignant·e doit néanmoins comprendre les limites de chaque source et exercer son jugement."
+        }
+      }
+    ],
+    "insight": {
+      "en": "Data literacy: What is measured, how valid are the indicators, and what evidence is missing? Algorithmic literacy: Which rules or models produce the score, and whose ways of expressing knowledge are recognised?",
+      "de": "Datenkompetenz: Was wird gemessen, wie aussagekräftig sind die Indikatoren und welche Nachweise fehlen? Algorithmische Kompetenz: Welche Regeln oder Modelle erzeugen die Bewertung, und welche Ausdrucksformen von Wissen werden erkannt?",
+      "fr": "Littératie des données : qu’est-ce qui est mesuré, quelle est la validité des indicateurs et quelles traces manquent ? Littératie algorithmique : quelles règles ou quels modèles produisent le score, et quelles manières d’exprimer ses connaissances sont reconnues ?"
+    },
+    "reflection": {
+      "en": "What assumptions about pupils’ knowledge are built into automated assessment? How could you explore this issue with student teachers?",
+      "de": "Welche Annahmen über das Wissen der Kinder sind in automatisierte Beurteilungen eingebaut? Wie könnten Sie dieses Thema mit Studierenden bearbeiten?",
+      "fr": "Quelles conceptions des connaissances des élèves sont intégrées dans l’évaluation automatisée ? Comment pourriez-vous aborder cette question avec de futur·es enseignant·es ?"
+    }
+  },
+  {
+    "id": "adaptive-learning",
+    "category": {
+      "en": "Differentiation",
+      "de": "Differenzierung",
+      "fr": "Différenciation"
+    },
+    "title": {
+      "en": "Who decides what pupils learn next?",
+      "de": "Wer entscheidet, was Kinder als Nächstes lernen?",
+      "fr": "Qui décide de ce que les élèves apprennent ensuite ?"
+    },
+    "context": {
+      "en": "An adaptive mathematics platform recommends easier exercises for a pupil after several incorrect answers. In classroom discussions, however, the teacher notices that the pupil can solve more challenging problems when given time to explain their thinking.",
+      "de": "Eine adaptive Mathematikplattform empfiehlt einem Kind nach mehreren falschen Antworten einfachere Aufgaben. In Unterrichtsgesprächen stellt die Lehrperson jedoch fest, dass das Kind anspruchsvollere Aufgaben lösen kann, wenn es Zeit erhält, seinen Denkweg zu erklären.",
+      "fr": "Une plateforme adaptative de mathématiques recommande des exercices plus faciles à un élève après plusieurs réponses incorrectes. Lors des échanges en classe, l’enseignant·e constate toutefois que l’élève peut résoudre des problèmes plus complexes lorsqu’il ou elle dispose de temps pour expliquer son raisonnement."
+    },
+    "question": {
+      "en": "What would you advise the teacher to do?",
+      "de": "Was würden Sie der Lehrperson empfehlen?",
+      "fr": "Que conseilleriez-vous à l’enseignant·e ?"
+    },
+    "options": [
+      {
+        "id": "follow",
+        "label": {
+          "en": "Follow the platform’s recommendations because they are personalised.",
+          "de": "Den Empfehlungen der Plattform folgen, da sie personalisiert sind.",
+          "fr": "Suivre les recommandations de la plateforme parce qu’elles sont personnalisées."
+        },
+        "feedback": {
+          "en": "Personalisation can be useful, but a recommendation is not a complete account of a learner’s ability. Repeatedly lowering difficulty may narrow future learning opportunities.",
+          "de": "Personalisierung kann hilfreich sein, aber eine Empfehlung bildet die Fähigkeiten eines Kindes nicht vollständig ab. Eine wiederholte Senkung des Schwierigkeitsgrads kann künftige Lerngelegenheiten einschränken.",
+          "fr": "La personnalisation peut être utile, mais une recommandation ne décrit pas entièrement les capacités d’un élève. Réduire systématiquement la difficulté peut limiter ses possibilités d’apprentissage."
+        }
+      },
+      {
+        "id": "override",
+        "label": {
+          "en": "Override the recommendation and offer more challenging exercises.",
+          "de": "Die Empfehlung übergehen und anspruchsvollere Aufgaben anbieten.",
+          "fr": "Ne pas suivre la recommandation et proposer des exercices plus exigeants."
+        },
+        "feedback": {
+          "en": "Teacher knowledge and observation matter. At the same time, investigate the data before dismissing the recommendation; it may contain useful information about specific difficulties.",
+          "de": "Das Wissen und die Beobachtungen der Lehrperson sind wichtig. Prüfen Sie zugleich die Datengrundlage, bevor Sie die Empfehlung verwerfen; sie kann Hinweise auf spezifische Schwierigkeiten enthalten.",
+          "fr": "Les connaissances et observations de l’enseignant·e sont essentielles. Il convient toutefois d’examiner les données avant d’écarter la recommandation : elles peuvent révéler des difficultés spécifiques."
+        }
+      },
+      {
+        "id": "investigate",
+        "label": {
+          "en": "Investigate the recommendation and combine platform data with classroom observations.",
+          "de": "Die Empfehlung untersuchen und Plattformdaten mit Unterrichtsbeobachtungen verbinden.",
+          "fr": "Examiner la recommandation et croiser les données de la plateforme avec les observations en classe."
+        },
+        "feedback": {
+          "en": "This approach treats the recommendation as one source of evidence rather than an instruction. Ask what data and decision rules shape it, and what the system cannot observe.",
+          "de": "So wird die Empfehlung als eine Informationsquelle und nicht als Anweisung verstanden. Fragen Sie, welche Daten und Entscheidungsregeln dahinterstehen und was das System nicht beobachten kann.",
+          "fr": "Cette approche considère la recommandation comme une source d’information parmi d’autres, et non comme une consigne. Demandez quelles données et règles de décision la produisent et ce que le système ne peut pas observer."
+        }
+      }
+    ],
+    "insight": {
+      "en": "Data literacy: Which performance indicators inform the recommendation, and what learning evidence is absent? Algorithmic literacy: How do automated recommendations shape expectations, pathways and teacher agency?",
+      "de": "Datenkompetenz: Welche Leistungsindikatoren fliessen in die Empfehlung ein und welche Lernnachweise fehlen? Algorithmische Kompetenz: Wie beeinflussen automatisierte Empfehlungen Erwartungen, Lernwege und die Handlungsspielräume der Lehrperson?",
+      "fr": "Littératie des données : quels indicateurs de performance alimentent la recommandation et quelles traces d’apprentissage manquent ? Littératie algorithmique : comment les recommandations automatisées influencent-elles les attentes, les parcours et le pouvoir d’agir de l’enseignant·e ?"
+    },
+    "reflection": {
+      "en": "Could repeated recommendations for easier work influence a pupil’s future learning opportunities? What should future teachers know before using adaptive systems?",
+      "de": "Können wiederholte Empfehlungen für einfachere Aufgaben die zukünftigen Lernmöglichkeiten eines Kindes beeinflussen? Was sollten angehende Lehrpersonen vor der Nutzung adaptiver Systeme wissen?",
+      "fr": "Des recommandations répétées d’exercices plus faciles peuvent-elles influencer les possibilités futures d’un élève ? Que devraient savoir les futur·es enseignant·es avant d’utiliser des systèmes adaptatifs ?"
+    }
+  },
+  {
+    "id": "engagement-dashboard",
+    "category": {
+      "en": "Learning analytics",
+      "de": "Learning Analytics",
+      "fr": "Analytique de l’apprentissage"
+    },
+    "title": {
+      "en": "Can a dashboard tell us who is engaged?",
+      "de": "Kann ein Dashboard zeigen, wer engagiert ist?",
+      "fr": "Un tableau de bord peut-il révéler qui est engagé ?"
+    },
+    "context": {
+      "en": "A teacher dashboard displays time spent on a learning platform, completed exercises and online contributions. It flags two pupils as having low engagement. One of them regularly contributes thoughtful ideas during face-to-face classroom discussions.",
+      "de": "Ein Lehrpersonen-Dashboard zeigt die auf einer Lernplattform verbrachte Zeit, erledigte Aufgaben und Online-Beiträge. Es markiert zwei Kinder als wenig engagiert. Eines davon bringt sich regelmässig mit durchdachten Ideen in Gespräche im Klassenzimmer ein.",
+      "fr": "Un tableau de bord destiné aux enseignant·es affiche le temps passé sur une plateforme, les exercices terminés et les contributions en ligne. Il signale deux élèves comme peu engagé·es. Pourtant, l’un d’eux apporte régulièrement des idées pertinentes lors des discussions en classe."
+    },
+    "question": {
+      "en": "What would you advise the teacher to do?",
+      "de": "Was würden Sie der Lehrperson empfehlen?",
+      "fr": "Que conseilleriez-vous à l’enseignant·e ?"
+    },
+    "options": [
+      {
+        "id": "rank",
+        "label": {
+          "en": "Use the dashboard ranking to identify pupils who need intervention.",
+          "de": "Das Dashboard-Ranking nutzen, um Kinder mit Unterstützungsbedarf zu erkennen.",
+          "fr": "Utiliser le classement du tableau de bord pour repérer les élèves qui ont besoin d’aide."
+        },
+        "feedback": {
+          "en": "Rankings can make patterns visible, but time online and clicks are proxies, not direct measures of engagement or learning. Labels based on incomplete indicators can mislead.",
+          "de": "Rankings können Muster sichtbar machen. Online-Zeit und Klicks sind jedoch indirekte Indikatoren und keine direkten Messungen von Engagement oder Lernen. Etikettierungen aufgrund unvollständiger Indikatoren können irreführend sein.",
+          "fr": "Les classements peuvent rendre visibles certaines tendances, mais le temps en ligne et les clics sont des indicateurs indirects, pas des mesures directes de l’engagement ou des apprentissages. Des étiquettes fondées sur des indicateurs incomplets peuvent induire en erreur."
+        }
+      },
+      {
+        "id": "question",
+        "label": {
+          "en": "Question whether the indicators accurately represent engagement.",
+          "de": "Hinterfragen, ob die Indikatoren das Engagement angemessen abbilden.",
+          "fr": "Se demander si les indicateurs représentent fidèlement l’engagement."
+        },
+        "feedback": {
+          "en": "This recognises that engagement is multidimensional. The next step is to identify what other evidence could provide a more complete picture.",
+          "de": "Damit wird anerkannt, dass Engagement mehrere Dimensionen umfasst. Als Nächstes sollte geklärt werden, welche weiteren Nachweise ein vollständigeres Bild ermöglichen.",
+          "fr": "Cette réponse reconnaît que l’engagement comporte plusieurs dimensions. Il faut ensuite déterminer quelles autres informations permettraient d’obtenir une vision plus complète."
+        }
+      },
+      {
+        "id": "triangulate",
+        "label": {
+          "en": "Combine dashboard information with observations and other evidence.",
+          "de": "Dashboard-Informationen mit Beobachtungen und weiteren Nachweisen kombinieren.",
+          "fr": "Croiser les informations du tableau de bord avec des observations et d’autres éléments."
+        },
+        "feedback": {
+          "en": "Combining sources can reduce the risk of labelling pupils based on digital traces alone. Consider whose activity is visible and whose participation may be overlooked.",
+          "de": "Die Kombination verschiedener Quellen verringert das Risiko, Kinder allein aufgrund digitaler Spuren zu etikettieren. Überlegen Sie, wessen Aktivität sichtbar ist und wessen Beteiligung möglicherweise übersehen wird.",
+          "fr": "Croiser plusieurs sources réduit le risque d’étiqueter les élèves à partir de leurs seules traces numériques. Demandez-vous quelles activités sont visibles et quelles formes de participation risquent d’être ignorées."
+        }
+      }
+    ],
+    "insight": {
+      "en": "Data literacy: Distinguish an indicator from the concept it is intended to represent. Algorithmic literacy: Understand how selected data and classification rules shape what a dashboard displays.",
+      "de": "Datenkompetenz: Einen Indikator vom Konzept unterscheiden, das er abbilden soll. Algorithmische Kompetenz: Verstehen, wie ausgewählte Daten und Klassifikationsregeln die Anzeige eines Dashboards prägen.",
+      "fr": "Littératie des données : distinguer un indicateur du concept qu’il est censé représenter. Littératie algorithmique : comprendre comment les données sélectionnées et les règles de classification façonnent l’affichage du tableau de bord."
+    },
+    "reflection": {
+      "en": "Which dimensions of engagement are missing from the dashboard? How could you help student teachers distinguish digital activity from meaningful participation?",
+      "de": "Welche Dimensionen des Engagements fehlen im Dashboard? Wie könnten Sie Studierenden dabei helfen, digitale Aktivität von sinnvoller Beteiligung zu unterscheiden?",
+      "fr": "Quelles dimensions de l’engagement sont absentes du tableau de bord ? Comment aideriez-vous les futur·es enseignant·es à distinguer l’activité numérique d’une participation porteuse de sens ?"
+    }
+  }
+]
