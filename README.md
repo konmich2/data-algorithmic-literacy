@@ -47,3 +47,10 @@ Commit the updated `config.js` to GitHub. The chatbot will then use the secure b
 - No participant responses are stored by this static site. The optional AI service receives the current scenario and conversation context to generate a response.
 - Review translations and scenarios with local teacher educators before formal release.
 - Consider adding a privacy notice and institutional contact before wider deployment.
+
+## Version 3: classroom photos and split-screen scenarios
+The `images/` directory contains six illustrative AI-generated classroom images. The homepage uses a split-screen layout with a photo and situation on the left, and decisions on the right. The editor includes a photo-path field.
+
+To change a photo: upload a JPEG to `images/`, then set the scenario's Photo path in the editor, export `scenarios.json`, and replace it on GitHub.
+
+The AI chatbot is **not live** until a separate secure backend is configured. The scenarios and explanatory feedback work without it. The editor is publicly accessible and does not publish changes directly.
