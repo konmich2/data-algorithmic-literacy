@@ -38,7 +38,13 @@
     "insight": "Literacy insight",
     "reflection": "Reflection prompt",
     "apiUnavailable": "The AI reflection service is not configured yet. You can still use the reflection prompt below. To enable the live chatbot, deploy the included secure backend and add its endpoint in config.js.",
-    "chatError": "The reflection service could not be reached. Please try again later or use the reflection prompt."
+    "chatError": "The reflection service could not be reached. Please try again later or use the reflection prompt.",
+    "choiceHelp": "Choose the response you consider most appropriate.",
+    "graaspHeading": "Graasp reflection chatbot",
+    "graaspOpen": "Open in a new tab ↗",
+    "graaspFallback": "If the chatbot does not load here, use “Open in a new tab”.",
+    "feedbackHeading": "What to consider",
+    "behindHeading": "What is happening behind the scenes?"
   },
   "de": {
     "aboutNav": "Über das Modul",
@@ -79,7 +85,13 @@
     "insight": "Kompetenzbezug",
     "reflection": "Reflexionsfrage",
     "apiUnavailable": "Der KI-Reflexionsdienst ist noch nicht konfiguriert. Sie können die Reflexionsfrage unten weiterhin nutzen. Für den Live-Chat müssen Sie das mitgelieferte sichere Backend bereitstellen und den Endpunkt in config.js eintragen.",
-    "chatError": "Der Reflexionsdienst ist momentan nicht erreichbar. Bitte versuchen Sie es später erneut oder nutzen Sie die Reflexionsfrage."
+    "chatError": "Der Reflexionsdienst ist momentan nicht erreichbar. Bitte versuchen Sie es später erneut oder nutzen Sie die Reflexionsfrage.",
+    "choiceHelp": "Wählen Sie die Reaktion, die Sie für am angemessensten halten.",
+    "graaspHeading": "Graasp-Reflexions-Chatbot",
+    "graaspOpen": "In neuem Tab öffnen ↗",
+    "graaspFallback": "Falls der Chatbot hier nicht geladen wird, öffnen Sie ihn in einem neuen Tab.",
+    "feedbackHeading": "Was Sie bedenken sollten",
+    "behindHeading": "Was geschieht im Hintergrund?"
   },
   "fr": {
     "aboutNav": "À propos",
@@ -120,6 +132,12 @@
     "insight": "Lien avec les littératies",
     "reflection": "Question de réflexion",
     "apiUnavailable": "Le service de réflexion IA n’est pas encore configuré. Vous pouvez néanmoins utiliser la question ci-dessous. Pour activer le chatbot, déployez le backend sécurisé fourni et ajoutez son adresse dans config.js.",
-    "chatError": "Le service de réflexion n’est pas accessible pour le moment. Réessayez plus tard ou utilisez la question de réflexion."
+    "chatError": "Le service de réflexion n’est pas accessible pour le moment. Réessayez plus tard ou utilisez la question de réflexion.",
+    "choiceHelp": "Choisissez la réponse qui vous semble la plus appropriée.",
+    "graaspHeading": "Chatbot de réflexion Graasp",
+    "graaspOpen": "Ouvrir dans un nouvel onglet ↗",
+    "graaspFallback": "Si le chatbot ne se charge pas ici, ouvrez-le dans un nouvel onglet.",
+    "feedbackHeading": "Éléments à prendre en compte",
+    "behindHeading": "Que se passe-t-il en arrière-plan ?"
   }
 }
