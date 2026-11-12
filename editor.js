@@ -1,57 +1,11 @@
-let data=[],tr={},lang='en';const $=id=>document.getElementById(id);
-async function init(){
- [data,tr]=await Promise.all([fetch('scenarios.json').then(r=>r.json()),fetch('translations.json').then(r=>r.json())]);
- const draft=localStorage.getItem('dal-scenarios-draft');if(draft){try{data=JSON.parse(draft)}catch(e){}}
- $('language').onchange=e=>{lang=e.target.value;render()};
- $('add').onclick=add;
- $('save').onclick=save;
- $('download').onclick=download;
- $('editorIntro').textContent=tr[lang].editorIntro;
- render();
-}
-function field(label,value,oninput,area=false){
- const wrap=document.createElement('label');wrap.style.display='block';wrap.style.margin='12px 0';
- const title=document.createElement('strong');title.textContent=label;title.style.display='block';
- const el=document.createElement(area?'textarea':'input');el.value=value||'';el.style.width='100%';el.style.marginTop='5px';if(area)el.rows=3;
- el.oninput=()=>oninput(el.value);wrap.append(title,el);return wrap;
-}
-function render(){
- const root=$('editor');root.innerHTML='';
- data.forEach((s,i)=>{
-  const card=document.createElement('section');card.className='panel';
-  const h=document.createElement('h2');h.textContent=`${i+1}. ${s.id}`;card.append(h);
-  card.append(field(tr[lang].id,s.id,v=>s.id=v));
-  ['en','de','fr'].forEach(l=>{
-   const langHead=document.createElement('h3');langHead.textContent={en:'English',de:'Deutsch',fr:'Français'}[l];card.append(langHead);
-   card.append(field(tr[lang].title,s.title[l],v=>s.title[l]=v));
-   card.append(field(tr[lang].context,s.context[l],v=>s.context[l]=v,true));
-   card.append(field(tr[lang].question,s.question[l],v=>s.question[l]=v));
-   s.options.forEach((o,j)=>{
-    const sub=document.createElement('h4');sub.textContent=`${tr[lang].options} ${j+1}`;card.append(sub);
-    card.append(field(tr[lang].label,o.label[l],v=>o.label[l]=v));
-    card.append(field(tr[lang].feedbackText,o.feedback[l],v=>o.feedback[l]=v,true));
-   });
-   card.append(field(tr[lang].reflectionText,s.reflection[l],v=>s.reflection[l]=v,true));
-  });
-  const actions=document.createElement('div');actions.className='home-actions';
-  const preview=document.createElement('button');preview.className='secondary';preview.textContent='Preview scenario';preview.onclick=()=>{save(false);const url='index.html#scenario='+encodeScenario(s);window.open(url,'_blank','noopener');};
-  const del=document.createElement('button');del.className='secondary';del.textContent=tr[lang].delete;del.onclick=()=>{if(confirm('Delete this scenario?')){data.splice(i,1);render()}};
-  actions.append(preview,del);card.append(actions);root.append(card);
- });
-}
-function encodeScenario(s){return btoa(unescape(encodeURIComponent(JSON.stringify(s)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
-function save(show=true){
- localStorage.setItem('dal-scenarios-draft',JSON.stringify(data));
- localStorage.setItem('dal-scenarios-published-local',JSON.stringify(data));
- if(show)$('status').textContent='Saved in this browser. The main scenario page will display these changes on this device.';
-}
-function add(){
- const id='new-scenario-'+(data.length+1),blank={en:'',de:'',fr:''};
- data.push({id,title:{...blank},context:{...blank},question:{...blank},options:[{id:'option-1',label:{...blank},feedback:{...blank}}],reflection:{...blank}});
- render();
-}
-function download(){
- const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');
- a.href=URL.createObjectURL(blob);a.download='scenarios.json';a.click();URL.revokeObjectURL(a.href);
-}
-init();
+let original=[],data=[],trans={},lang="en",active=0;const $=id=>document.getElementById(id);async function init(){[original,trans]=await Promise.all([fetch("scenarios.json").then(r=>r.json()),fetch("translations.json").then(r=>r.json())]);data=JSON.parse(JSON.stringify(original));lang=localStorage.getItem("dal-lang")||"en";$("language").value=lang;applyLang();$("language").onchange=e=>{lang=e.target.value;localStorage.setItem("dal-lang",lang);applyLang();render();};$("save").onclick=saveLocal;$("download").onclick=download;$("reset").onclick=reset;$("addScenario").onclick=add;renderList();render();}
+function t(k){return trans[lang][k]||trans.en[k]||k}function applyLang(){document.documentElement.lang=lang;document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=t(e.dataset.i18n));}
+function renderList(){let box=$("scenarioList");box.innerHTML="";data.forEach((s,i)=>{let b=document.createElement("button");b.className=i===active?"active":"";b.textContent=s.title[lang]||s.title.en;b.onclick=()=>{active=i;renderList();render();};box.appendChild(b);});}
+function field(label,key,value,area=false){return `<label>${label}<${area?"textarea":"input"} data-key="${key}" ${area?'rows="4"':''}>${area?esc(value):""}</${area?"textarea":"input"}>${area?"":""}`+(area?"":`<script></script>`)+`</label>`;}
+function render(){let s=data[active];if(!s)return;$("fields").innerHTML=`<h3>${t("scenario")} ${active+1}</h3><label>ID<input id="id" value="${esc(s.id)}"></label>`;["category","title","context","question","insight","reflection"].forEach(key=>{let isArea=["context","insight","reflection"].includes(key);$("fields").insertAdjacentHTML("beforeend",`<div class="language-fields"><h4>${t(key)}</h4>${["en","de","fr"].map(l=>`<label>${({en:"English",de:"Deutsch",fr:"Français"})[l]}${isArea?`<textarea data-path="${key}.${l}" rows="3">${esc(s[key][l]||"")}</textarea>`:`<input data-path="${key}.${l}" value="${esc(s[key][l]||"")}">`}</label>`).join("")}</div>`);});$("fields").insertAdjacentHTML("beforeend",`<div class="language-fields"><h4>${t("options")}</h4>${s.options.map((o,i)=>`<h4>Option ${i+1} (${esc(o.id)})</h4>${["en","de","fr"].map(l=>`<label>${l.toUpperCase()} — label<input data-path="options.${i}.label.${l}" value="${esc(o.label[l]||"")}"></label><label>${l.toUpperCase()} — ${t("feedback")}<textarea data-path="options.${i}.feedback.${l}" rows="3">${esc(o.feedback[l]||"")}</textarea></label>`).join("")}`).join("")}</div>`);$("fields").querySelectorAll("[data-path]").forEach(el=>el.onchange=()=>setPath(s,el.dataset.path,el.value));$("id").onchange=e=>s.id=e.target.value;renderList();}
+function setPath(obj,path,val){let parts=path.split("."),last=parts.pop(),target=obj;parts.forEach(p=>target=target[p]);target[last]=val;}
+function saveLocal(){localStorage.setItem("dal-editor-scenarios",JSON.stringify(data));$("status").textContent="Saved in this browser. Export the JSON to publish it for all users.";}
+function download(){let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="scenarios.json";a.click();URL.revokeObjectURL(a.href);$("status").textContent="Download created. Replace scenarios.json in your GitHub repository to publish.";}
+function reset(){if(confirm("Reset all scenarios to the original versions?")){data=JSON.parse(JSON.stringify(original));active=0;render();$("status").textContent="Original scenarios restored."}}
+function add(){let s=JSON.parse(JSON.stringify(data[0]));s.id="new-scenario-"+Date.now();["en","de","fr"].forEach(l=>{s.title[l]="New scenario";s.context[l]="Describe a realistic teaching situation.";s.question[l]="What would you advise the teacher to do?";s.category[l]="New category";s.insight[l]="Describe the data and algorithmic literacy implications.";s.reflection[l]="What does this mean for teacher education?";s.options.forEach((o,i)=>{o.label[l]="Option "+(i+1);o.feedback[l]="Explain the implications of this decision.";});});data.push(s);active=data.length-1;render();}
+function esc(v){return String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}init();
