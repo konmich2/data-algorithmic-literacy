@@ -1,106 +1,13 @@
-let scenarios = [], translations = {}, lang = "en", current = null, selectedChoice = null;
-const $ = id => document.getElementById(id);
-
-async function init() {
-  try {
-    const [scenarioResponse, translationResponse] = await Promise.all([
-      fetch("scenarios.json"), fetch("translations.json")
-    ]);
-    if (!scenarioResponse.ok || !translationResponse.ok) throw new Error("Could not load OER content files.");
-    scenarios = await scenarioResponse.json();
-    translations = await translationResponse.json();
-  } catch (error) {
-    console.error(error);
-    document.body.insertAdjacentHTML("afterbegin",
-      '<p class="load-error">The scenario content could not be loaded. Please refresh the page or check that scenarios.json and translations.json are in the repository root.</p>');
-    return;
-  }
-
-  lang = localStorage.getItem("dal-lang") || "en";
-  if (!translations[lang]) lang = "en";
-  $("language").value = lang;
-  applyLanguage();
-  $("language").addEventListener("change", event => {
-    lang = event.target.value;
-    localStorage.setItem("dal-lang", lang);
-    applyLanguage();
-    if (current) {
-      renderScenario(current);
-      if (selectedChoice) showFeedback(selectedChoice);
-    }
-  });
-  $("start").addEventListener("click", startScenario);
-  $("another").addEventListener("click", startScenario);
-}
-
-function t(key) {
-  return (translations[lang] && translations[lang][key]) || (translations.en && translations.en[key]) || key;
-}
-
-function applyLanguage() {
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(element => {
-    element.textContent = t(element.dataset.i18n);
-  });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(element => {
-    element.placeholder = t(element.dataset.i18nPlaceholder);
-  });
-}
-
-function startScenario() {
-  if (!scenarios.length) return;
-  let pool = scenarios.filter(scenario => !current || scenario.id !== current.id);
-  if (!pool.length) pool = scenarios;
-  current = pool[Math.floor(Math.random() * pool.length)];
-  selectedChoice = null;
-  $("workspace").classList.remove("hidden");
-  $("reflectionPanel").classList.add("hidden");
-  $("feedback").classList.add("hidden");
-  renderScenario(current);
-  $("workspace").scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function renderScenario(scenario) {
-  const index = scenarios.findIndex(item => item.id === scenario.id) + 1;
-  $("scenarioCount").textContent = `${t("scenario").toUpperCase()} · ${index} / ${scenarios.length}`;
-  $("scenarioTitle").textContent = scenario.title[lang] || scenario.title.en;
-  $("scenarioImage").src = scenario.image || "images/assessment.jpg";
-  $("scenarioImage").alt = scenario.title[lang] || scenario.title.en;
-  $("category").textContent = scenario.category[lang] || scenario.category.en;
-  $("scenarioContext").textContent = scenario.context[lang] || scenario.context.en;
-  $("scenarioQuestion").textContent = scenario.question[lang] || scenario.question.en;
-  $("choices").replaceChildren();
-
-  scenario.options.forEach((option, index) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "choice";
-    button.innerHTML = `<span class="letter">${String.fromCharCode(65 + index)}.</span><span>${escapeHTML(option.label[lang] || option.label.en)}</span>`;
-    button.addEventListener("click", () => {
-      selectedChoice = option;
-      document.querySelectorAll(".choice").forEach(item => item.classList.remove("selected"));
-      button.classList.add("selected");
-      showFeedback(option);
-    });
-    $("choices").appendChild(button);
-  });
-}
-
-function showFeedback(option) {
-  const feedback = option.feedback[lang] || option.feedback.en;
-  const insight = current.insight[lang] || current.insight.en;
-  $("feedback").innerHTML =
-    `<h4>${escapeHTML(t("feedbackHeading"))}</h4><p>${escapeHTML(feedback)}</p>` +
-    `<h4>${escapeHTML(t("behindHeading"))}</h4><p>${escapeHTML(insight)}</p>`;
-  $("feedback").classList.remove("hidden");
-  $("reflectionPrompt").textContent = current.reflection[lang] || current.reflection.en;
-  $("reflectionPanel").classList.remove("hidden");
-}
-
-function escapeHTML(value) {
-  return String(value || "").replace(/[&<>"']/g, character => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-  }[character]));
-}
-
+let scenarios=[], translations={}, lang="en", current=null, chosen=null, chatHistory=[];
+const $=id=>document.getElementById(id);
+async function init(){try{[scenarios,translations]=await Promise.all([fetch("scenarios.json").then(r=>r.json()),fetch("translations.json").then(r=>r.json())]);}catch(e){console.error(e);return}
+lang=localStorage.getItem("dal-lang")||"en";$("language").value=lang;applyLanguage();$("language").addEventListener("change",e=>{lang=e.target.value;localStorage.setItem("dal-lang",lang);applyLanguage();if(current)renderScenario(current);});$("start").onclick=()=>startScenario();$("another").onclick=()=>startScenario();$("chatForm").onsubmit=sendChat;}
+function t(k){return (translations[lang]||translations.en)[k]||translations.en[k]||k}
+function applyLanguage(){document.documentElement.lang=lang;document.querySelectorAll("[data-i18n]").forEach(el=>{let k=el.dataset.i18n;el.textContent=t(k)});document.querySelectorAll("[data-i18n-placeholder]").forEach(el=>el.placeholder=t(el.dataset.i18nPlaceholder));}
+function startScenario(){let pool=scenarios.filter(s=>!current||s.id!==current.id);if(!pool.length)pool=scenarios;current=pool[Math.floor(Math.random()*pool.length)];chosen=null;chatHistory=[];$("workspace").classList.remove("hidden");$("reflectionPanel").classList.add("hidden");$("feedback").classList.add("hidden");$("chatLog").innerHTML=`<div class="bubble assistant">${esc(t("chatWelcome"))}</div>`;renderScenario(current);$("workspace").scrollIntoView({behavior:"smooth"});}
+function renderScenario(s){$("scenarioCount").textContent=`${t("scenario").toUpperCase()} · ${scenarios.findIndex(x=>x.id===s.id)+1} / ${scenarios.length}`;$("scenarioTitle").textContent=s.title[lang]||s.title.en;$("category").textContent=s.category[lang]||s.category.en;$("scenarioContext").textContent=s.context[lang]||s.context.en;$("scenarioQuestion").textContent=s.question[lang]||s.question.en;$("choices").innerHTML="";s.options.forEach((o,i)=>{let b=document.createElement("button");b.className="choice";b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}.</span><span>${esc(o.label[lang]||o.label.en)}</span>`;b.onclick=()=>selectChoice(o,b);$("choices").appendChild(b);});}
+function selectChoice(o,b){chosen=o;document.querySelectorAll(".choice").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");let fb=o.feedback[lang]||o.feedback.en;$("feedback").innerHTML=`<h4>${esc(lang==="de"?"Was Sie bedenken sollten":lang==="fr"?"Éléments à considérer":"What to consider")}</h4><p>${esc(fb)}</p><h4>${esc(lang==="de"?"Was steckt dahinter?":lang==="fr"?"Que se passe-t-il en arrière-plan ?":"What is happening behind the scenes?")}</h4><p>${esc(current.insight[lang]||current.insight.en)}</p>`;$("feedback").classList.remove("hidden");$("reflectionPrompt").textContent=current.reflection[lang]||current.reflection.en;$("reflectionPanel").classList.remove("hidden");chatHistory=[{role:"assistant",content:`Scenario: ${current.title.en}\nSituation: ${current.context.en}\nParticipant's decision: ${o.label.en}\nFeedback: ${o.feedback.en}\nReflection prompt: ${current.reflection.en}`}];}
+async function sendChat(e){e.preventDefault();let input=$("chatInput"),msg=input.value.trim();if(!msg||!current||!chosen)return;appendChat("user",msg);input.value="";$("chatStatus").textContent="…";let endpoint=window.REFLECTION_API_URL;if(!endpoint){appendChat("assistant",t("apiUnavailable"));$("chatStatus").textContent="";return;}chatHistory.push({role:"user",content:msg});try{let r=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({language:lang,scenario:{title:current.title,context:current.context,question:current.question,insight:current.insight,reflection:current.reflection},decision:chosen.label,message:msg,history:chatHistory.slice(-8)})});if(!r.ok)throw Error("API "+r.status);let data=await r.json();let reply=data.reply||"Could you say a little more?";chatHistory.push({role:"assistant",content:reply});appendChat("assistant",reply);}catch(err){console.error(err);appendChat("assistant",t("chatError"));}$("chatStatus").textContent="";}
+function appendChat(role,msg){let d=document.createElement("div");d.className="bubble "+role;d.textContent=msg;$("chatLog").appendChild(d);$("chatLog").scrollTop=$("chatLog").scrollHeight;}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
 init();

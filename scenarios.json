@@ -71,8 +71,7 @@
       "en": "What assumptions about pupils’ knowledge are built into automated assessment? How could you explore this issue with student teachers?",
       "de": "Welche Annahmen über das Wissen der Kinder sind in automatisierte Beurteilungen eingebaut? Wie könnten Sie dieses Thema mit Studierenden bearbeiten?",
       "fr": "Quelles conceptions des connaissances des élèves sont intégrées dans l’évaluation automatisée ? Comment pourriez-vous aborder cette question avec de futur·es enseignant·es ?"
-    },
-    "image": "images/assessment.jpg"
+    }
   },
   {
     "id": "adaptive-learning",
@@ -146,8 +145,7 @@
       "en": "Could repeated recommendations for easier work influence a pupil’s future learning opportunities? What should future teachers know before using adaptive systems?",
       "de": "Können wiederholte Empfehlungen für einfachere Aufgaben die zukünftigen Lernmöglichkeiten eines Kindes beeinflussen? Was sollten angehende Lehrpersonen vor der Nutzung adaptiver Systeme wissen?",
       "fr": "Des recommandations répétées d’exercices plus faciles peuvent-elles influencer les possibilités futures d’un élève ? Que devraient savoir les futur·es enseignant·es avant d’utiliser des systèmes adaptatifs ?"
-    },
-    "image": "images/differentiation.jpg"
+    }
   },
   {
     "id": "engagement-dashboard",
@@ -221,12 +219,10 @@
       "en": "Which dimensions of engagement are missing from the dashboard? How could you help student teachers distinguish digital activity from meaningful participation?",
       "de": "Welche Dimensionen des Engagements fehlen im Dashboard? Wie könnten Sie Studierenden dabei helfen, digitale Aktivität von sinnvoller Beteiligung zu unterscheiden?",
       "fr": "Quelles dimensions de l’engagement sont absentes du tableau de bord ? Comment aideriez-vous les futur·es enseignant·es à distinguer l’activité numérique d’une participation porteuse de sens ?"
-    },
-    "image": "images/analytics.jpg"
+    }
   },
   {
     "id": "inclusion",
-    "image": "images/inclusion.jpg",
     "title": {
       "en": "The student who disappears from the data",
       "de": "Das Kind, das in den Daten verschwindet",
@@ -301,7 +297,6 @@
   },
   {
     "id": "prediction",
-    "image": "images/prediction.jpg",
     "title": {
       "en": "The student labelled as at risk",
       "de": "Das als gefährdet eingestufte Kind",
@@ -376,7 +371,6 @@
   },
   {
     "id": "ai-feedback",
-    "image": "images/ai-feedback.jpg",
     "title": {
       "en": "Whose feedback is it?",
       "de": "Wessen Rückmeldung ist das?",
