@@ -1,6 +1,6 @@
 # Data & Algorithms in Teaching — OER
 
-A multilingual (English, German, French) scenario-based sensibilisation module for teacher educators. It includes classroom scenarios, decision feedback, reflection prompts, an editable scenario bank, and an optional AI-powered reflection chatbot. Scenario images have been removed in this version.
+A multilingual (English, German, French) scenario-based sensitisation module for teacher educators. It includes six classroom scenarios, decision feedback, reflection prompts, an editable scenario bank, and an optional AI-powered reflection chatbot. Scenario images have been removed in this version.
 
 ## Files
 - `index.html`: public learning module
@@ -53,3 +53,6 @@ The scenario editor now supports editing all English, German and French fields. 
 Each scenario can be shared independently. The Share button creates a URL containing that scenario's content; recipients open the link directly at the shared scenario. This does not require a database or account. The link is a snapshot: if you edit the scenario later, create and share a new link to distribute the updated version.
 
 For permanent changes to the default scenario collection for all visitors, export `scenarios.json` from the editor and replace the repository file on GitHub.
+
+
+The public website currently contains six scenarios. Additional scenarios can be added by editing `scenarios.json` in the GitHub repository.
